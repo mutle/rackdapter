@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
+$PROXY = 1
 require File.join(File.dirname(__FILE__), '../lib/rackdapter')
-Rackdapter::Master.new(ARGV.first || 'rackdapter.yml')
+Rackdapter::Proxy.new(ARGV.first || 'rackdapter.yml')

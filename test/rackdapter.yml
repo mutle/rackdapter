@@ -1,0 +1,8 @@
+proxy:
+  log: log/proxy.log
+test:
+  path: apps/test
+  environment: development
+  backend: mongrel
+  port: 4080
+  min_instances: 2
