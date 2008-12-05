@@ -88,7 +88,7 @@ module Rackdapter
   
   module ProxyBackend
     def self.spawn(application, port=nil)
-      exec "ruby bin/rackdapter_proxy #{Rackdapter.config_path}"
+      exec "rackdapter_proxy #{Rackdapter.config_path}"
     end
   end
   
