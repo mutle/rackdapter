@@ -1,0 +1,67 @@
+=Rackdapter
+
+==Disclaimer
+
+I'm looking for a better name, esp. since it doesn't actually use Rack.
+
+Copyright (c) 2008 Mutwin Kraus (mutwin.kraus@gmail.com)
+
+Rackdapter is licensed under the MIT License.
+
+==Usage
+
+Starting
+  rackdapter /patch/to/rackdapter.yml
+
+To restart all instances, send SIGHUP to the rackdapter process.
+
+==Sample config
+
+  #rackdapter.yml
+  proxy:
+    log: log/proxy.log
+  portal:
+    path: /Users/mutle/bs/portal
+    environment: development
+    backend: mongrel
+    type: rails
+    port: 3006
+    base_port: 23932
+    instances: 1
+    log: log/rackdapter.<environment>.<port>.log
+  blog:
+    path: /Users/mutle/bs/blog
+    environment: development
+    backend: mongrel
+    type: rails
+    port: 3007
+    base_port: 23942
+    instances: 1
+    log: log/rackdapter.<environment>.<port>.log
+  files:
+    path: /Users/mutle/bs/user_files
+    environment: development
+    backend: mongrel
+    type: merb
+    port: 4000
+    base_port: 23952
+    instances: 1
+    log: log/rackdapter.<environment>.<port>.log
+  ads:
+    path: /Users/mutle/bs/ads
+    environment: development
+    backend: mongrel
+    type: merb
+    port: 4001
+    base_port: 23962
+    instances: 1
+    log: log/rackdapter.<environment>.<port>.log
+  layouts:
+    path: /Users/mutle/bs/layouts
+    environment: development
+    backend: mongrel
+    type: merb
+    port: 4002
+    base_port: 23972
+    instances: 1
+    log: log/rackdapter.<environment>.<port>.log

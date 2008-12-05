@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = %q{mutwin.kraus@gmail.com}
   s.executables = ["rackdapter", "rackdapter_proxy"]
   s.extra_rdoc_files = ["bin/rackdapter", "bin/rackdapter_proxy", "lib/rackdapter/config.rb", "lib/rackdapter/master.rb", "lib/rackdapter/proxy.rb", "lib/rackdapter/rackdapter.rb", "lib/rackdapter/spawner.rb", "lib/rackdapter.rb", "README.rdoc"]
-  s.files = ["bin/rackdapter", "bin/rackdapter_proxy", "lib/rackdapter/config.rb", "lib/rackdapter/master.rb", "lib/rackdapter/proxy.rb", "lib/rackdapter/rackdapter.rb", "lib/rackdapter/spawner.rb", "lib/rackdapter.rb", "Manifest", "Rakefile", "README.rdoc", "test/rackdapter.yml", "test/test_helper.rb", "test/unit/test_config.rb", "rackdapter.gemspec"]
+  s.files = ["bin/rackdapter", "bin/rackdapter_proxy", "lib/rackdapter/config.rb", "lib/rackdapter/master.rb", "lib/rackdapter/proxy.rb", "lib/rackdapter/rackdapter.rb", "lib/rackdapter/spawner.rb", "lib/rackdapter.rb", "Manifest", "MIT-LICENSE", "rackdapter.gemspec", "Rakefile", "README.rdoc", "test/rackdapter.yml", "test/test_helper.rb", "test/unit/test_config.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/mutle/rackdapter}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Rackdapter", "--main", "README.rdoc"]
