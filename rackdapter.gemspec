@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rackdapter}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mutwin Kraus"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = %q{mutwin.kraus@gmail.com}
   s.executables = ["rackdapter", "rackdapter_proxy"]
   s.extra_rdoc_files = ["bin/rackdapter", "bin/rackdapter_proxy", "lib/rackdapter/config.rb", "lib/rackdapter/master.rb", "lib/rackdapter/proxy.rb", "lib/rackdapter/rackdapter.rb", "lib/rackdapter/spawner.rb", "lib/rackdapter.rb", "README.rdoc"]
-  s.files = ["bin/rackdapter", "bin/rackdapter_proxy", "lib/rackdapter/config.rb", "lib/rackdapter/master.rb", "lib/rackdapter/proxy.rb", "lib/rackdapter/rackdapter.rb", "lib/rackdapter/spawner.rb", "lib/rackdapter.rb", "Manifest", "MIT-LICENSE", "rackdapter.gemspec", "Rakefile", "README.rdoc", "test/rackdapter.yml", "test/test_helper.rb", "test/unit/test_config.rb"]
+  s.files = ["bin/rackdapter", "bin/rackdapter_proxy", "lib/rackdapter/config.rb", "lib/rackdapter/master.rb", "lib/rackdapter/proxy.rb", "lib/rackdapter/rackdapter.rb", "lib/rackdapter/spawner.rb", "lib/rackdapter.rb", "Manifest", "MIT-LICENSE", "Rakefile", "README.rdoc", "test/rackdapter.yml", "test/test_helper.rb", "test/unit/test_config.rb", "rackdapter.gemspec"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/mutle/rackdapter}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Rackdapter", "--main", "README.rdoc"]

@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('rackdapter', '0.0.1') do |p|
+Echoe.new('rackdapter', '0.0.2') do |p|
   p.description    = "rackdapter"
   p.gemspec_name   = "rackdapter.gemspec"
   p.url            = "http://github.com/mutle/rackdapter"

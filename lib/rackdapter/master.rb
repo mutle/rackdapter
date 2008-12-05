@@ -29,7 +29,7 @@ module Rackdapter
       Signal.trap("TERM") { all_apps(:stop); exit(0) }
       Signal.trap("HUP") { all_apps(:restart) }
       EventMachine::run {
-        EventMachine::add_timer(5) { all_apps(:ensure_running) }
+        EventMachine::add_periodic_timer(5) { all_apps(:ensure_running) }
       }
     end
   end

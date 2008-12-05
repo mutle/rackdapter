@@ -61,34 +61,36 @@ module Rackdapter
   end
   
   def self.app_options(app, port, options)
-    out = ''
     log = app.log.gsub(/<port>/, port.to_s).gsub(/<environment>/, app.environment)
+    opts = []
     options.each do |k,v|
-      out << " -#{k.to_s} #{v}" unless v.blank?
+      unless v.blank?
+        opts << "-#{k.to_s}"
+        opts << v.to_s
+      end
     end
-    out << " >> #{log} 2>&1"
-    out
+    opts
   end
   
   module RailsBackend
     def self.spawn(app, port)
       Dir.chdir(app.path)
-      options = Rackdapter.app_options(app, port, "e" => app.environment, "p" => port)
-      exec "mongrel_rails start #{options}"
+      options = Rackdapter.app_options(app, port, "e" => app.environment, "p" => port, "c" => File.expand_path(app.path))
+      exec "ruby", "/usr/bin/mongrel_rails", "start", *options
     end
   end
   
   module MerbBackend
     def self.spawn(app, port)
       Dir.chdir(app.path)
-      options = Rackdapter.app_options(app, port, "e" => app.environment, "p" => port, "n" => app.name)
-      exec "merb #{options}"
+      options = Rackdapter.app_options(app, port, "e" => app.environment, "p" => port, "n" => app.name, "m" => File.expand_path(app.path))
+      exec "ruby", "/usr/bin/merb", *options
     end
   end
   
   module ProxyBackend
     def self.spawn(application, port=nil)
-      exec "rackdapter_proxy #{Rackdapter.config_path}"
+      exec "ruby", File.join(File.dirname(__FILE__), '../../bin/rackdapter_proxy'), Rackdapter.config_path
     end
   end
   
