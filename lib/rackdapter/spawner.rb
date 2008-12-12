@@ -1,7 +1,7 @@
 module Rackdapter
   
   class Application
-    attr_accessor :name, :path, :environment, :backend, :port, :balancer, :base_port, :instances, :type, :log
+    attr_accessor :name, :path, :environment, :backend, :port, :balancer, :base_port, :instances, :type, :log, :ruby
     
     def initialize(options={})
       options.each do |k,v|
@@ -29,6 +29,10 @@ module Rackdapter
         @ports << base_port + i
       end
       @ports
+    end
+    
+    def ruby
+      @ruby || "/usr/bin/ruby"
     end
     
     def all_instances(&block)
@@ -76,7 +80,7 @@ module Rackdapter
     def self.spawn(app, port)
       Dir.chdir(app.path)
       options = Rackdapter.app_options(app, port, "e" => app.environment, "p" => port, "c" => File.expand_path(app.path))
-      exec "ruby", "/usr/bin/mongrel_rails", "start", *options
+      exec app.ruby, "/usr/bin/mongrel_rails", "start", *options
     end
   end
   
@@ -84,13 +88,13 @@ module Rackdapter
     def self.spawn(app, port)
       Dir.chdir(app.path)
       options = Rackdapter.app_options(app, port, "e" => app.environment, "p" => port, "n" => app.name, "m" => File.expand_path(app.path))
-      exec "ruby", "/usr/bin/merb", *options
+      exec app.ruby, "/usr/bin/merb", *options
     end
   end
   
   module ProxyBackend
     def self.spawn(application, port=nil)
-      exec "ruby", File.join(File.dirname(__FILE__), '../../bin/rackdapter_proxy'), Rackdapter.config_path
+      exec app.ruby, File.join(File.dirname(__FILE__), '../../bin/rackdapter_proxy'), Rackdapter.config_path
     end
   end
   
@@ -144,7 +148,7 @@ module Rackdapter
       return false unless @pid
       found = false
       `ps`.each_line do |line|
-        if line =~ /(^| )(#{@pid}) /
+        if line =~ /^ *(#{@pid}) /
           found = true
           break
         end

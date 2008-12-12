@@ -25,8 +25,8 @@ module Rackdapter
     end
     
     def run      
-      Signal.trap("INT") { all_apps(:stop); exit(0) }
-      Signal.trap("TERM") { all_apps(:stop); exit(0) }
+      Signal.trap("INT") { all_apps(:stop); EventMachine::stop_event_loop }
+      Signal.trap("TERM") { all_apps(:stop); EventMachine::stop_event_loop }
       Signal.trap("HUP") { all_apps(:restart) }
       EventMachine::run {
         EventMachine::add_periodic_timer(5) { all_apps(:ensure_running) }

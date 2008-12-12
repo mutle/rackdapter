@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mutwin Kraus"]
-  s.date = %q{2008-12-05}
+  s.date = %q{2008-12-12}
   s.description = %q{rackdapter}
   s.email = %q{mutwin.kraus@gmail.com}
   s.executables = ["rackdapter", "rackdapter_proxy"]
