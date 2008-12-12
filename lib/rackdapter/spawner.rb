@@ -1,7 +1,7 @@
 module Rackdapter
   
   class Application
-    attr_accessor :name, :path, :environment, :backend, :port, :balancer, :base_port, :instances, :type, :log, :ruby
+    attr_accessor :name, :path, :environment, :backend, :port, :balancer, :base_port, :instances, :type, :log, :ruby, :adapter
     
     def initialize(options={})
       options.each do |k,v|
@@ -87,14 +87,14 @@ module Rackdapter
   module MerbBackend
     def self.spawn(app, port)
       Dir.chdir(app.path)
-      options = Rackdapter.app_options(app, port, "e" => app.environment, "p" => port, "n" => app.name, "m" => File.expand_path(app.path))
+      options = Rackdapter.app_options(app, port, "e" => app.environment, "p" => port, "n" => app.name, "m" => File.expand_path(app.path), "a" => app.adapter)
       exec app.ruby, "/usr/bin/merb", *options
     end
   end
   
   module ProxyBackend
     def self.spawn(application, port=nil)
-      exec app.ruby, File.join(File.dirname(__FILE__), '../../bin/rackdapter_proxy'), Rackdapter.config_path
+      exec application.ruby, File.join(File.dirname(__FILE__), '../../bin/rackdapter_proxy'), Rackdapter.config_path
     end
   end
   
